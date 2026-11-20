@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liceo Jaime Guzmán García | Excelencia Académica y Formación Integral</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter y Playfair Display para toques institucionales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconografía limpia -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            300: '#9fb3c8',
+                            400: '#829ab1',
+                            500: '#627d98',
+                            600: '#486581',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#102a43',
+                            950: '#0a1c2e',
+                        },
+                        gold: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados para animaciones suaves y detalles visuales */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(16, 42, 67, 0.92) 0%, rgba(10, 28, 46, 0.80) 60%, rgba(217, 119, 6, 0.25) 100%);
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ocultar barra de scroll horizontal en pestañas móviles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-gold-500 selection:text-navy-950 overflow-x-hidden">
+
+    <!-- ===================================================================== -->
+    <!-- BARRA SUPERIOR DE INFORMACIÓN RÁPIDA (TOPBAR)                         -->
+    <!-- ===================================================================== -->
+    <div class="bg-navy-950 text-slate-300 text-xs py-2 border-b border-navy-800 hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-gold-400"></i>
+                    Av. Concha y Toro 2450, Puente Alto, Región Metropolitana, Chile
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-gold-400"></i>
+                    +56 2 2850 4910
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-gold-400"></i>
+                    contacto@liceojaimeguzman.cl
+                </span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2.5 py-0.5 rounded-full font-medium">
+                    <i class="fa-solid fa-bullhorn mr-1"></i> Admisión 2027 Abierta (SAE)
+                </span>
+                <div class="flex space-x-3 text-slate-400">
+                    <a href="#contacto" aria-label="Instagram" class="hover:text-gold-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#contacto" aria-label="Facebook" class="hover:text-gold-400 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#contacto" aria-label="YouTube" class="hover:text-gold-400 transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- BARRA DE NAVEGACIÓN FIJA SUPERIOR (STICKY NAVBAR)                     -->
+    <!-- ===================================================================== -->
+    <header id="navbar" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Escudo / Logo Institucional SVG -->
+                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 flex items-center justify-center shadow-md group-hover:bg-navy-800 transition relative overflow-hidden border-2 border-gold-500">
+                        <!-- Escudo Heráldico Personalizado SVG -->
+                        <svg class="w-8 h-8 text-gold-400" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 4L10 13V30C10 44.5 19.4 57.6 32 61C44.6 57.6 54 44.5 54 30V13L32 4Z" stroke="currentColor" stroke-width="3.5" fill="#102a43"/>
+                            <path d="M32 10L16 17V30C16 40.8 22.8 50.6 32 53.8C41.2 50.6 48 40.8 48 30V17L32 10Z" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 2"/>
+                            <!-- Libro Abierto -->
+                            <path d="M21 28C24.5 26.5 28.5 27 32 29.5C35.5 27 39.5 26.5 43 28V39C39.5 37.5 35.5 38 32 40.5C28.5 38 24.5 37.5 21 39V28Z" fill="#fbbf24"/>
+                            <!-- Estrella Solitaria Chilena -->
+                            <polygon points="32,14 33.5,18.5 38,18.5 34.3,21.2 35.7,25.5 32,22.8 28.3,25.5 29.7,21.2 26,18.5 30.5,18.5" fill="#ffffff"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-bold text-navy-900 text-lg sm:text-xl leading-tight tracking-tight">
+                            Liceo Jaime Guzmán García
+                        </span>
+                        <span class="text-[11px] font-semibold uppercase tracking-widest text-gold-600">
+                            Educación Pública de Excelencia • Chile
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Enlaces de Navegación Desktop -->
+                <nav class="hidden xl:flex items-center space-x-1">
+                    <a href="#inicio" class="px-3 py-2 rounded-lg text-sm font-medium text-navy-900 hover:bg-navy-50 hover:text-gold-600 transition">Inicio</a>
+                    <a href="#nosotros" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-900 transition">Nosotros</a>
+                    <a href="#proyecto" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-900 transition">Proyecto Educativo</a>
+                    <a href="#niveles" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-900 transition">Niveles Académicos</a>
+                    <a href="#noticias" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-900 transition">Noticias y Eventos</a>
+                    <a href="#admision" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-900 transition">Admisión</a>
+                    <a href="#contacto" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-navy-50 hover:text-navy-900 transition">Contacto</a>
+                </nav>
+
+                <!-- Botón Portal Apoderados / Estudiantes + Menú Móvil -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openPortalModal()" class="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition transform active:scale-95 border border-navy-700">
+                        <i class="fa-solid fa-user-graduate text-gold-400"></i>
+                        <span class="hidden sm:inline">Portal Apoderados / Estudiantes</span>
+                        <span class="sm:hidden">Portal</span>
+                    </button>
+
+                    <!-- Botón Hamburguesa Móvil -->
+                    <button id="mobile-menu-btn" aria-label="Abrir menú" class="xl:hidden p-2.5 rounded-xl text-navy-900 hover:bg-slate-100 focus:outline-none border border-slate-200">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil / Tablet -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-slate-200 shadow-xl">
+            <div class="px-4 pt-3 pb-6 space-y-1.5">
+                <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-semibold text-navy-900 bg-navy-50">Inicio</a>
+                <a href="#nosotros" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50">Nosotros</a>
+                <a href="#proyecto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50">Proyecto Educativo</a>
+                <a href="#niveles" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50">Niveles Académicos</a>
+                <a href="#noticias" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50">Noticias y Eventos</a>
+                <a href="#admision" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50">Admisión 2027</a>
+                <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50">Contacto</a>
+                <div class="pt-3 border-t border-slate-100">
+                    <button onclick="openPortalModal()" class="w-full flex justify-center items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold py-3 px-4 rounded-xl shadow">
+                        <i class="fa-solid fa-right-to-bracket"></i> Ingresar a Intranet Escolar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 2. SECCIÓN HERO INSTITUCIONAL                                         -->
+    <!-- ===================================================================== -->
+    <section id="inicio" class="relative min-h-[85vh] flex items-center overflow-hidden bg-navy-950">
+        <!-- Imagen Institucional de Alta Calidad (Unsplash con fallback) -->
+        <img 
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=85" 
+            onerror="this.src='https://placehold.co/1920x1080/102a43/fbbf24?text=Liceo+Jaime+Guzman+Garcia'"
+            alt="Campus y estudiantes del Liceo Jaime Guzmán García" 
+            class="absolute inset-0 w-full h-full object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"
+        >
+        <!-- Degradado Institucional -->
+        <div class="absolute inset-0 hero-overlay"></div>
+
+        <!-- Contenido Principal Hero -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
+            <div class="max-w-3xl">
+                <!-- Etiqueta Institucional -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-gold-400/40 text-gold-300 text-xs sm:text-sm font-semibold mb-6">
+                    <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+                    <span>Comunidad Educativa Reconocida por el Ministerio de Educación • Chile</span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                    Formando líderes con <span class="text-gold-400">valores</span>, excelencia académica y <span class="underline decoration-gold-500 decoration-4 underline-offset-8">compromiso social</span>
+                </h1>
+
+                <!-- Bajada Descriptiva -->
+                <p class="text-lg sm:text-xl text-slate-200 mb-10 leading-relaxed font-light max-w-2xl">
+                    En el <strong class="font-semibold text-white">Liceo Jaime Guzmán García</strong> impulsamos el desarrollo integral de niños, niñas y jóvenes desde Enseñanza Básica hasta IV° Medio, preparando ciudadanos íntegros para los desafíos del Chile del mañana.
+                </p>
+
+                <!-- Botones de Acción (CTA) -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#admision" class="inline-flex justify-center items-center gap-2.5 bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-base px-8 py-4 rounded-xl shadow-xl shadow-gold-500/20 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                        <span>Proceso de Admisión 2027</span>
+                    </a>
+                    <a href="#proyecto" class="inline-flex justify-center items-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-semibold text-base px-8 py-4 rounded-xl transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-book-open text-gold-400"></i>
+                        <span>Conoce Nuestro Proyecto</span>
+                    </a>
+                </div>
+
+                <!-- Indicadores Rápidos / Estadísticas del Liceo -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14 pt-8 border-t border-white/15">
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-gold-400">+45</p>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1">Años de trayectoria educativa</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white">94%</p>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1">Ingreso a Educación Superior</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-gold-400">18</p>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1">Talleres extraprogramáticos</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white">100%</p>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1">Equipo PIE y apoyo psicosocial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. SECCIÓN SOBRE NOSOTROS, HISTORIA Y SELLO EDUCATIVO                 -->
+    <!-- ===================================================================== -->
+    <section id="nosotros" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Bloque Superior: Historia y Reseña -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20 fade-in-up">
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80" 
+                            onerror="this.src='https://placehold.co/800x600/102a43/ffffff?text=Comunidad+Escolar'"
+                            alt="Docentes y estudiantes en sala de clases" 
+                            class="w-full h-[420px] object-cover"
+                        >
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-navy-950/90 via-navy-900/50 to-transparent p-6 text-white">
+                            <p class="text-sm font-semibold text-gold-400 uppercase tracking-wider">Tradición y Vanguardia</p>
+                            <p class="text-lg font-medium">Aulas equipadas con tecnología interactiva y laboratorios certificados.</p>
+                        </div>
+                    </div>
+                    <!-- Tarjeta Flotante de Reconocimiento -->
+                    <div class="hidden sm:flex items-center gap-4 bg-navy-900 text-white p-5 rounded-2xl shadow-xl border border-gold-500/40 absolute -bottom-6 -right-6 max-w-xs">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500 text-navy-950 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm text-gold-400">Excelencia SNED</p>
+                            <p class="text-xs text-slate-300 leading-snug">Reconocimiento al desempeño académico y convivencia escolar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-50 text-navy-800 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-landmark text-gold-600"></i> Nuestra Identidad
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-900 leading-tight">
+                        Más de cuatro décadas construyendo futuro en nuestra comunidad
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Fundado con la vocación de brindar una educación rigurosa, humanista y profundamente arraigada en los valores cívicos y democráticos de Chile, el <strong class="text-navy-900">Liceo Jaime Guzmán García</strong> se ha consolidado como un referente educativo en la Región Metropolitana.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Nuestro sello educativo combina una sólida preparación académica orientada a la Prueba de Acceso a la Educación Superior (PAES) con el fomento del pensamiento crítico, las artes, el deporte y la responsabilidad social.
+                    </p>
+
+                    <!-- Misión y Visión en Tarjetas Compactas -->
+                    <div id="proyecto" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-navy-300 transition">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <h3 class="font-bold text-navy-900 text-lg mb-2">Nuestra Misión</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Educar integralmente a estudiantes con alto estándar académico, autonomía intelectual y vocación de servicio, respetando la diversidad y potenciando sus talentos individuales.
+                            </p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-gold-400 transition">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500 text-navy-950 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <h3 class="font-bold text-navy-900 text-lg mb-2">Nuestra Visión</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Ser reconocidos como una institución educativa líder por su calidad pedagógica, innovación tecnológica y formación de ciudadanos éticos que aporten al desarrollo del país.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Valores Institucionales (4 Pilares) -->
+            <div class="pt-10 border-t border-slate-200 fade-in-up">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest">Pilares Formativos</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Nuestros Valores Institucionales</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Valor 1: Excelencia -->
+                    <div class="group p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-navy-800 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-navy-900 group-hover:bg-navy-900 group-hover:text-gold-400 flex items-center justify-center text-2xl mb-5 transition">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Excelencia</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Cultivamos el rigor académico, la perseverancia y la superación personal constante en cada asignatura y proyecto escolar.
+                        </p>
+                    </div>
+
+                    <!-- Valor 2: Respeto -->
+                    <div class="group p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-navy-800 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-navy-900 group-hover:bg-navy-900 group-hover:text-gold-400 flex items-center justify-center text-2xl mb-5 transition">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Respeto</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Promovemos la sana convivencia escolar, el diálogo democrático, la empatía y el cuidado mutuo entre todos los estamentos.
+                        </p>
+                    </div>
+
+                    <!-- Valor 3: Inclusión -->
+                    <div class="group p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-navy-800 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-navy-900 group-hover:bg-navy-900 group-hover:text-gold-400 flex items-center justify-center text-2xl mb-5 transition">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Inclusión</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Valoramos la diversidad como fuente de aprendizaje, garantizando igualdad de oportunidades y apoyo personalizado a cada estudiante.
+                        </p>
+                    </div>
+
+                    <!-- Valor 4: Innovación -->
+                    <div class="group p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-navy-800 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-navy-50 text-navy-900 group-hover:bg-navy-900 group-hover:text-gold-400 flex items-center justify-center text-2xl mb-5 transition">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Innovación</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Integramos metodologías activas, pensamiento computacional, ciencia aplicada y herramientas digitales en el aula.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. SECCIÓN OFERTA ACADÉMICA / NIVELES (PESTAÑAS INTERACTIVAS)         -->
+    <!-- ===================================================================== -->
+    <section id="niveles" class="py-20 lg:py-28 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-100 text-gold-700 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-layer-group"></i> Formación Continua
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-900 mb-4">
+                    Oferta Académica y Niveles Educativos
+                </h2>
+                <p class="text-slate-600 text-base sm:text-lg">
+                    Acompañamos cada etapa del crecimiento escolar con currículum actualizado según bases MINEDUC, jornada escolar completa y acompañamiento vocacional.
+                </p>
+            </div>
+
+            <!-- Navegación por Pestañas Interactivas -->
+            <div class="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-2 sm:gap-3 mb-10 pb-2" role="tablist">
+                <button onclick="switchAcademicTab('basica')" id="tab-btn-basica" class="academic-tab-btn active whitespace-nowrap px-5 py-3.5 rounded-xl font-bold text-sm transition flex items-center gap-2 bg-navy-900 text-white shadow-md">
+                    <i class="fa-solid fa-children text-gold-400"></i> Enseñanza Básica (1° a 8°)
+                </button>
+                <button onclick="switchAcademicTab('media')" id="tab-btn-media" class="academic-tab-btn whitespace-nowrap px-5 py-3.5 rounded-xl font-bold text-sm transition flex items-center gap-2 bg-white text-slate-700 hover:bg-navy-50 border border-slate-200">
+                    <i class="fa-solid fa-user-graduate text-navy-700"></i> Enseñanza Media (I° a IV°)
+                </button>
+                <button onclick="switchAcademicTab('talleres')" id="tab-btn-talleres" class="academic-tab-btn whitespace-nowrap px-5 py-3.5 rounded-xl font-bold text-sm transition flex items-center gap-2 bg-white text-slate-700 hover:bg-navy-50 border border-slate-200">
+                    <i class="fa-solid fa-robot text-navy-700"></i> Talleres Extraprogramáticos
+                </button>
+                <button onclick="switchAcademicTab('pie')" id="tab-btn-pie" class="academic-tab-btn whitespace-nowrap px-5 py-3.5 rounded-xl font-bold text-sm transition flex items-center gap-2 bg-white text-slate-700 hover:bg-navy-50 border border-slate-200">
+                    <i class="fa-solid fa-heart-pulse text-navy-700"></i> Programa Integración (PIE)
+                </button>
+            </div>
+
+            <!-- Contenedor de Contenido de las Pestañas -->
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+                
+                <!-- PESTAÑA 1: ENSEÑANZA BÁSICA -->
+                <div id="tab-content-basica" class="academic-tab-content grid grid-cols-1 lg:grid-cols-12">
+                    <div class="lg:col-span-5 relative min-h-[280px]">
+                        <img 
+                            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80" 
+                            onerror="this.src='https://placehold.co/800x600/102a43/fbbf24?text=Ensenanza+Basica'"
+                            alt="Estudiantes de Enseñanza Básica" 
+                            class="w-full h-full object-cover"
+                        >
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-sm text-gold-400 text-xs font-bold px-3.5 py-1.5 rounded-full">
+                            1° a 8° Año Básico • JEC
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-900 mb-3">
+                                Enseñanza General Básica
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Enfocados en sentar bases sólidas en comprensión lectora, razonamiento lógico-matemático, inglés intensivo desde 1° básico y desarrollo socioemocional en un entorno seguro y afectivo.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Plan Lector y Biblioteca CRA</h4>
+                                        <p class="text-xs text-slate-500">Fomento temprano de la lectura crítica y escritura creativa.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Inglés Comunicativo</h4>
+                                        <p class="text-xs text-slate-500">4 horas semanales con laboratorio multimedia de idiomas.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Ciencias Experimentales</h4>
+                                        <p class="text-xs text-slate-500">Aprendizaje basado en indagación científica desde primer ciclo.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Formación Ciudadana</h4>
+                                        <p class="text-xs text-slate-500">Talleres de convivencia, ecología y participación estudiantil.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-regular fa-clock mr-1 text-navy-800"></i> Horario: 08:00 a 15:30 hrs (Lunes a Jueves) / 13:15 hrs (Viernes)</span>
+                            <a href="#admision" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 transition">
+                                Postular a Básica <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA 2: ENSEÑANZA MEDIA -->
+                <div id="tab-content-media" class="academic-tab-content hidden grid grid-cols-1 lg:grid-cols-12">
+                    <div class="lg:col-span-5 relative min-h-[280px]">
+                        <img 
+                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" 
+                            onerror="this.src='https://placehold.co/800x600/102a43/fbbf24?text=Ensenanza+Media'"
+                            alt="Estudiantes de Enseñanza Media Científico-Humanista" 
+                            class="w-full h-full object-cover"
+                        >
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-sm text-gold-400 text-xs font-bold px-3.5 py-1.5 rounded-full">
+                            I° a IV° Medio • Científico-Humanista
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-900 mb-3">
+                                Enseñanza Media Científico-Humanista
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Preparamos a nuestros jóvenes para la Educación Superior mediante planes diferenciados de profundización en III° y IV° Medio, preuniversitario interno gratuito y orientación vocacional personalizada.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Preuniversitario Institucional</h4>
+                                        <p class="text-xs text-slate-500">Ensayos PAES periódicos en Competencia Lectora, Matemática y Ciencias.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Electivos de Profundización</h4>
+                                        <p class="text-xs text-slate-500">Áreas Matemática-Física, Biología-Química y Humanidades-Economía.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Convenios Universitarios</h4>
+                                        <p class="text-xs text-slate-500">Pasantías tempranas y charlas con universidades tradicionales de Chile.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Liderazgo y Centro de Alumnos</h4>
+                                        <p class="text-xs text-slate-500">Fomento activo del debate, oratoria y gestión de proyectos juveniles.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-regular fa-clock mr-1 text-navy-800"></i> Horario: 08:00 a 16:15 hrs (Incluye talleres electivos)</span>
+                            <a href="#admision" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 transition">
+                                Postular a Media <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA 3: TALLERES EXTRAPROGRAMÁTICOS -->
+                <div id="tab-content-talleres" class="academic-tab-content hidden grid grid-cols-1 lg:grid-cols-12">
+                    <div class="lg:col-span-5 relative min-h-[280px]">
+                        <img 
+                            src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80" 
+                            onerror="this.src='https://placehold.co/800x600/102a43/fbbf24?text=Talleres+y+Robotica'"
+                            alt="Taller de Robótica y Ciencias" 
+                            class="w-full h-full object-cover"
+                        >
+                        <div class="absolute top-4 left-4 bg-gold-500 text-navy-950 text-xs font-bold px-3.5 py-1.5 rounded-full">
+                            18 Disciplinas Gratuitas
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-900 mb-3">
+                                Talleres Extraprogramáticos ACLE
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Potenciamos las habilidades artísticas, deportivas y tecnológicas de nuestros estudiantes mediante academias vespertinas dirigidas por especialistas.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0"><i class="fa-solid fa-robot"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Robótica y Programación</h4>
+                                        <p class="text-xs text-slate-500">Arduino, impresión 3D y torneos inter-escolares.</p>
+                                    </div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0"><i class="fa-solid fa-futbol"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Selecciones Deportivas</h4>
+                                        <p class="text-xs text-slate-500">Fútbol, Básquetbol, Vóleibol y Atletismo.</p>
+                                    </div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0"><i class="fa-solid fa-music"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Orquesta y Banda Instrumental</h4>
+                                        <p class="text-xs text-slate-500">Cuerdas, vientos, coro polifónico y folclore chileno.</p>
+                                    </div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-navy-900 text-gold-400 flex items-center justify-center shrink-0"><i class="fa-solid fa-palette"></i></div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Artes Visuales y Teatro</h4>
+                                        <p class="text-xs text-slate-500">Muralismo, fotografía digital y compañía teatral.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-trophy mr-1 text-gold-600"></i> Campeones Comunales de Debate y Robótica 2026</span>
+                            <a href="#noticias" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 transition">
+                                Ver logros recientes <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PESTAÑA 4: PROGRAMA DE INTEGRACIÓN ESCOLAR (PIE) -->
+                <div id="tab-content-pie" class="academic-tab-content hidden grid grid-cols-1 lg:grid-cols-12">
+                    <div class="lg:col-span-5 relative min-h-[280px]">
+                        <img 
+                            src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=900&q=80" 
+                            onerror="this.src='https://placehold.co/800x600/102a43/fbbf24?text=Programa+PIE'"
+                            alt="Equipo multidisciplinario PIE" 
+                            class="w-full h-full object-cover"
+                        >
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-sm text-gold-400 text-xs font-bold px-3.5 py-1.5 rounded-full">
+                            Decreto 170 • Inclusión Efectiva
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-900 mb-3">
+                                Programa de Integración Escolar (PIE) y Convivencia
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Contamos con un equipo multidisciplinario altamente calificado que trabaja en co-docencia en aula y apoyo en sala de recursos, asegurando que cada estudiante alcance su máximo potencial.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Educadoras Diferenciales</h4>
+                                        <p class="text-xs text-slate-500">Adecuaciones curriculares y estrategias diversificadas (DUA).</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Psicólogos y Trabajadores Sociales</h4>
+                                        <p class="text-xs text-slate-500">Contención emocional, talleres para familias y redes de apoyo.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Fonoaudiología y Terapia Ocupacional</h4>
+                                        <p class="text-xs text-slate-500">Intervención especializada en lenguaje, comunicación e integración sensorial.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-check text-gold-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-navy-900">Mediación Escolar</h4>
+                                        <p class="text-xs text-slate-500">Protocolos activos de prevención del acoso escolar y buen trato.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                            <span class="text-xs font-semibold text-slate-500"><i class="fa-solid fa-heart mr-1 text-rose-500"></i> Educación inclusiva para toda nuestra comunidad</span>
+                            <a href="#contacto" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 transition">
+                                Agendar entrevista con equipo PIE <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. SECCIÓN NOTICIAS Y CALENDARIO ESCOLAR                              -->
+    <!-- ===================================================================== -->
+    <section id="noticias" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-up">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-gold-600 font-bold text-xs uppercase tracking-widest">Actualidad Institucional</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-900 mt-1">
+                        Noticias y Calendario Escolar
+                    </h2>
+                </div>
+                <p class="text-slate-600 text-sm max-w-md">
+                    Mantente informado sobre las actividades académicas, logros estudiantiles y fechas clave del año escolar en nuestro liceo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- Columna Izquierda (8 cols): Tarjetas de Noticias -->
+                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Noticia 1 -->
+                    <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
+                        <div class="relative h-48 overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80" 
+                                onerror="this.src='https://placehold.co/600x400/102a43/fbbf24?text=Feria+Cientifica'"
+                                alt="Feria Científica y Tecnológica" 
+                                class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                            >
+                            <span class="absolute top-3 left-3 bg-navy-900 text-gold-400 text-xs font-bold px-3 py-1 rounded-full">
+                                Ciencia y Tecnología
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2 text-xs text-slate-400 mb-2">
+                                    <i class="fa-regular fa-calendar"></i> 12 de Noviembre, 2026
+                                </div>
+                                <h3 class="font-bold text-lg text-navy-900 mb-2 leading-snug">
+                                    Exitosa VIII Feria Científica y de Innovación Sustentable
+                                </h3>
+                                <p class="text-sm text-slate-600 line-clamp-3 mb-4">
+                                    Más de 40 proyectos de energías renovables, robótica educativa y biotecnología fueron presentados por nuestros estudiantes ante apoderados y académicos invitados.
+                                </p>
+                            </div>
+                            <button onclick="openNewsModal('feria')" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 self-start transition">
+                                Leer noticia completa <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 2 -->
+                    <article class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
+                        <div class="relative h-48 overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=800&q=80" 
+                                onerror="this.src='https://placehold.co/600x400/102a43/fbbf24?text=Campeonato+Deportivo'"
+                                alt="Campeonato Deportivo Interescolar" 
+                                class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                            >
+                            <span class="absolute top-3 left-3 bg-gold-500 text-navy-950 text-xs font-bold px-3 py-1 rounded-full">
+                                Deportes y Vida Sana
+                            </span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2 text-xs text-slate-400 mb-2">
+                                    <i class="fa-regular fa-calendar"></i> 04 de Noviembre, 2026
+                                </div>
+                                <h3 class="font-bold text-lg text-navy-900 mb-2 leading-snug">
+                                    Selección de Básquetbol obtiene 1° Lugar Regional
+                                </h3>
+                                <p class="text-sm text-slate-600 line-clamp-3 mb-4">
+                                    Nuestros deportistas sub-17 demostraron compañerismo, disciplina y alto rendimiento al coronarse campeones del Torneo Interescolar Metropolitano.
+                                </p>
+                            </div>
+                            <button onclick="openNewsModal('deporte')" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 self-start transition">
+                                Leer noticia completa <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 3 (Destacada Horizontal) -->
+                    <article class="md:col-span-2 bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col sm:flex-row gap-6 items-center hover:border-navy-300 transition">
+                        <img 
+                            src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" 
+                            onerror="this.src='https://placehold.co/400x300/102a43/ffffff?text=Reunion+Apoderados'"
+                            alt="Reunión de Apoderados y Comunidad" 
+                            class="w-full sm:w-48 h-40 object-cover rounded-xl shrink-0"
+                        >
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="bg-navy-100 text-navy-800 text-xs font-bold px-2.5 py-0.5 rounded-md">Comunidad y Familia</span>
+                                <span class="text-xs text-slate-400">28 de Octubre, 2026</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-900 mb-2">
+                                Escuela para Padres: Acompañamiento socioemocional y preparación PAES
+                            </h3>
+                            <p class="text-sm text-slate-600 mb-3">
+                                Gran convocatoria tuvo la jornada organizada por el Departamento de Orientación y el Centro General de Padres y Apoderados (CGPA).
+                            </p>
+                            <button onclick="openNewsModal('apoderados')" class="text-sm font-bold text-navy-900 hover:text-gold-600 inline-flex items-center gap-1.5 transition">
+                                Ver resumen y material descargable <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Columna Derecha (4 cols): Calendario Escolar Próximos Eventos -->
+                <div class="lg:col-span-4">
+                    <div class="bg-navy-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-navy-800 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-navy-700 pb-4 mb-6">
+                                <h3 class="font-serif text-xl font-bold flex items-center gap-2">
+                                    <i class="fa-regular fa-calendar-days text-gold-400"></i>
+                                    Próximos Eventos
+                                </h3>
+                                <span class="text-xs bg-navy-800 text-gold-300 px-2.5 py-1 rounded-full font-semibold">Nov - Dic 2026</span>
+                            </div>
+
+                            <div class="space-y-5">
+                                <!-- Evento 1 -->
+                                <div class="flex gap-4 items-start group">
+                                    <div class="w-14 h-14 rounded-2xl bg-gold-500 text-navy-950 flex flex-col items-center justify-center shrink-0 font-extrabold shadow">
+                                        <span class="text-lg leading-none">25</span>
+                                        <span class="text-[10px] uppercase tracking-wider mt-0.5">NOV</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white group-hover:text-gold-300 transition">Última Reunión de Apoderados</h4>
+                                        <p class="text-xs text-slate-300 mt-0.5">Entrega de informes parciales y cierre de semestre.</p>
+                                        <span class="inline-block text-[11px] text-gold-400 mt-1"><i class="fa-regular fa-clock mr-1"></i> 18:30 hrs • Salas por curso</span>
+                                    </div>
+                                </div>
+
+                                <!-- Evento 2 -->
+                                <div class="flex gap-4 items-start group">
+                                    <div class="w-14 h-14 rounded-2xl bg-navy-800 border border-navy-600 text-white flex flex-col items-center justify-center shrink-0 font-extrabold">
+                                        <span class="text-lg leading-none text-gold-400">02</span>
+                                        <span class="text-[10px] uppercase tracking-wider mt-0.5">DIC</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white group-hover:text-gold-300 transition">Gala Artística y Musical de Fin de Año</h4>
+                                        <p class="text-xs text-slate-300 mt-0.5">Presentación de Orquesta Juvenil, Coro y Taller de Danza.</p>
+                                        <span class="inline-block text-[11px] text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Auditórium Central • 19:00 hrs</span>
+                                    </div>
+                                </div>
+
+                                <!-- Evento 3 -->
+                                <div class="flex gap-4 items-start group">
+                                    <div class="w-14 h-14 rounded-2xl bg-navy-800 border border-navy-600 text-white flex flex-col items-center justify-center shrink-0 font-extrabold">
+                                        <span class="text-lg leading-none text-gold-400">10</span>
+                                        <span class="text-[10px] uppercase tracking-wider mt-0.5">DIC</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white group-hover:text-gold-300 transition">Ceremonia de Licenciatura IV° Medio</h4>
+                                        <p class="text-xs text-slate-300 mt-0.5">Egreso Generación 2026 del Liceo Jaime Guzmán García.</p>
+                                        <span class="inline-block text-[11px] text-gold-400 mt-1"><i class="fa-regular fa-clock mr-1"></i> 11:00 hrs • Patio de Honor</span>
+                                    </div>
+                                </div>
+
+                                <!-- Evento 4 -->
+                                <div class="flex gap-4 items-start group">
+                                    <div class="w-14 h-14 rounded-2xl bg-navy-800 border border-navy-600 text-white flex flex-col items-center justify-center shrink-0 font-extrabold">
+                                        <span class="text-lg leading-none text-gold-400">15</span>
+                                        <span class="text-[10px] uppercase tracking-wider mt-0.5">DIC</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white group-hover:text-gold-300 transition">Inicio Período de Matrículas 2027</h4>
+                                        <p class="text-xs text-slate-300 mt-0.5">Estudiantes nuevos seleccionados vía SAE y alumnos antiguos.</p>
+                                        <span class="inline-block text-[11px] text-gold-400 mt-1"><i class="fa-regular fa-clock mr-1"></i> 09:00 a 14:00 hrs • Secretaría</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-navy-800">
+                            <a href="#admision" class="w-full py-3 px-4 rounded-xl bg-white/10 hover:bg-white/15 text-center text-xs font-bold text-gold-300 block transition">
+                                <i class="fa-solid fa-bell mr-1.5"></i> Solicitar recordatorio de fechas SAE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. SECCIÓN ADMISIÓN Y MATRÍCULAS (SAE + FORMULARIO DE VISITA GUIADA)  -->
+    <!-- ===================================================================== -->
+    <section id="admision" class="py-20 lg:py-28 bg-navy-950 text-white relative overflow-hidden">
+        <!-- Decoración sutil de fondo -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-navy-600/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in-up">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-500/20 border border-gold-400/30 text-gold-300 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-school"></i> Únete a Nuestra Comunidad
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                    Proceso de Admisión y Matrículas 2027
+                </h2>
+                <p class="text-slate-300 text-base sm:text-lg">
+                    Nuestro establecimiento está adscrito al <strong class="text-gold-400">Sistema de Admisión Escolar (SAE)</strong> del Ministerio de Educación de Chile. Te orientamos paso a paso en tu postulación.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Columna Izquierda (6 cols): Pasos SAE y Requisitos -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <h3 class="font-serif text-2xl font-bold text-gold-400 mb-6 flex items-center gap-2.5">
+                            <i class="fa-solid fa-list-ol"></i> Etapas del Proceso SAE
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Paso 1 -->
+                            <div class="bg-navy-900/90 border border-navy-800 p-5 rounded-2xl flex gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-950 font-extrabold flex items-center justify-center shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Conoce nuestro Proyecto Educativo</h4>
+                                    <p class="text-sm text-slate-300 mt-1">Agenda una visita guiada presencial con tu familia para recorrer nuestras aulas, laboratorios y conversar con el equipo directivo.</p>
+                                </div>
+                            </div>
+
+                            <!-- Paso 2 -->
+                            <div class="bg-navy-900/90 border border-navy-800 p-5 rounded-2xl flex gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-950 font-extrabold flex items-center justify-center shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Postula en la plataforma oficial SAE</h4>
+                                    <p class="text-sm text-slate-300 mt-1">Ingresa a <span class="text-gold-300 underline">sistemadeadmisionescolar.cl</span> con el RUN del apoderado y selecciona al <strong>Liceo Jaime Guzmán García</strong> en tu lista de preferencias.</p>
+                                </div>
+                            </div>
+
+                            <!-- Paso 3 -->
+                            <div class="bg-navy-900/90 border border-navy-800 p-5 rounded-2xl flex gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-950 font-extrabold flex items-center justify-center shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Resultados y Matrícula Presencial</h4>
+                                    <p class="text-sm text-slate-300 mt-1">Una vez aceptada la vacante, acude a nuestro liceo en diciembre con la documentación requerida para formalizar la matrícula.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requisitos de Matrícula -->
+                    <div class="bg-navy-900/60 border border-gold-500/30 rounded-2xl p-6">
+                        <h4 class="font-bold text-white text-base mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open text-gold-400"></i> Documentación Requerida para Matrícula
+                        </h4>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400 text-xs"></i> Certificado de Nacimiento (Asignación Familiar)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400 text-xs"></i> Comprobante de Resultados SAE</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400 text-xs"></i> Certificado Anual de Estudios anterior</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400 text-xs"></i> Cédula de Identidad del Apoderado Titular</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha (6 cols): Formulario Interactivo de Visita Guiada / Información -->
+                <div class="lg:col-span-6">
+                    <div class="bg-white text-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl border border-slate-200">
+                        <div class="mb-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-gold-600">Atención Personalizada</span>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-900 mt-1">
+                                Agenda una Visita Guiada o Solicita Información
+                            </h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Completa tus datos y nuestro equipo de Admisión se contactará contigo dentro de las próximas 24 horas hábiles.
+                            </p>
+                        </div>
+
+                        <!-- Mensaje de Confirmación (Oculto inicialmente) -->
+                        <div id="admission-success-box" class="hidden mb-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-emerald-600 text-2xl mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-bold text-base">¡Solicitud recibida con éxito!</h4>
+                                    <p id="admission-success-text" class="text-sm text-emerald-800 mt-1"></p>
+                                    <button type="button" onclick="resetAdmissionForm()" class="mt-3 text-xs font-bold text-emerald-700 underline hover:text-emerald-900">
+                                        Enviar otra consulta
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario con Validación -->
+                        <form id="admission-form" class="space-y-4" novalidate>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="parent-name" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">Nombre del Apoderado *</label>
+                                    <input type="text" id="parent-name" required placeholder="Ej. María González" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm transition">
+                                    <p id="err-parent-name" class="hidden text-xs text-rose-600 mt-1">Por favor ingresa tu nombre completo.</p>
+                                </div>
+                                <div>
+                                    <label for="parent-rut" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">RUT (Opcional)</label>
+                                    <input type="text" id="parent-rut" placeholder="Ej. 15.432.890-K" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm transition">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="parent-email" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">Correo Electrónico *</label>
+                                    <input type="email" id="parent-email" required placeholder="correo@ejemplo.cl" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm transition">
+                                    <p id="err-parent-email" class="hidden text-xs text-rose-600 mt-1">Ingresa un correo electrónico válido.</p>
+                                </div>
+                                <div>
+                                    <label for="parent-phone" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">Teléfono / WhatsApp *</label>
+                                    <input type="tel" id="parent-phone" required placeholder="+56 9 8765 4321" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm transition">
+                                    <p id="err-parent-phone" class="hidden text-xs text-rose-600 mt-1">Ingresa un teléfono de contacto válido.</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="student-level" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">Nivel de Interés *</label>
+                                    <select id="student-level" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm bg-white transition">
+                                        <option value="">Selecciona un nivel...</option>
+                                        <option value="1° a 4° Básico">Enseñanza Básica (1° a 4°)</option>
+                                        <option value="5° a 8° Básico">Enseñanza Básica (5° a 8°)</option>
+                                        <option value="I° a II° Medio">Enseñanza Media (I° a II°)</option>
+                                        <option value="III° a IV° Medio">Enseñanza Media (III° a IV°)</option>
+                                    </select>
+                                    <p id="err-student-level" class="hidden text-xs text-rose-600 mt-1">Selecciona el nivel al que postula.</p>
+                                </div>
+                                <div>
+                                    <label for="request-type" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">Tipo de Solicitud</label>
+                                    <select id="request-type" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm bg-white transition">
+                                        <option value="Visita Guiada Presencial">Agendar Visita Guiada Presencial</option>
+                                        <option value="Orientación Postulación SAE">Orientación Postulación SAE</option>
+                                        <option value="Consulta Programa PIE">Consulta Programa Integración (PIE)</option>
+                                        <option value="Información General">Información General y Aranceles/Gratuidad</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="parent-message" class="block text-xs font-bold text-navy-900 uppercase mb-1.5">Mensaje o Preferencia de Horario</label>
+                                <textarea id="parent-message" rows="3" placeholder="Indícanos qué día prefieres visitarnos o tus consultas..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm transition"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 text-base">
+                                <i class="fa-solid fa-paper-plane text-gold-400"></i>
+                                <span>Enviar Solicitud de Admisión</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. PIE DE PÁGINA COMPLETO (FOOTER) Y CONTACTO                          -->
+    <!-- ===================================================================== -->
+    <footer id="contacto" class="bg-slate-900 text-slate-300 border-t-4 border-gold-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+                
+                <!-- Columna 1: Identidad y Descripción (4 cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-navy-900 border border-gold-500 flex items-center justify-center text-gold-400 font-serif font-bold text-xl">
+                            JGG
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-white text-lg">Liceo Jaime Guzmán García</h3>
+                            <p class="text-xs text-gold-400 uppercase tracking-wider">RBD: 25418-3 • Región Metropolitana</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Institución educativa comprometida con la formación académica de excelencia, los valores republicanos y el desarrollo integral de nuestros estudiantes en Chile.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#contacto" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-navy-950 flex items-center justify-center transition">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#contacto" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-navy-950 flex items-center justify-center transition">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="#contacto" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-navy-950 flex items-center justify-center transition">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
+                        <a href="#contacto" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gold-500 hover:text-navy-950 flex items-center justify-center transition">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos (2 cols) -->
+                <div class="lg:col-span-2">
+                    <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-4 border-b border-slate-800 pb-2">Navegación</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#inicio" class="hover:text-gold-400 transition">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-gold-400 transition">Sobre Nosotros</a></li>
+                        <li><a href="#proyecto" class="hover:text-gold-400 transition">Proyecto Educativo (PEI)</a></li>
+                        <li><a href="#niveles" class="hover:text-gold-400 transition">Niveles y Talleres</a></li>
+                        <li><a href="#noticias" class="hover:text-gold-400 transition">Noticias y Calendario</a></li>
+                        <li><a href="#admision" class="hover:text-gold-400 transition">Admisión 2027</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Documentos Institucionales (3 cols) -->
+                <div class="lg:col-span-3">
+                    <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-4 border-b border-slate-800 pb-2">Normativa y Portales</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><button onclick="openPortalModal()" class="hover:text-gold-400 transition text-left">Portal Apoderados y Notas</button></li>
+                        <li><a href="#proyecto" class="hover:text-gold-400 transition">Reglamento Interno de Convivencia</a></li>
+                        <li><a href="#proyecto" class="hover:text-gold-400 transition">Protocolo Aula Segura y RICE</a></li>
+                        <li><a href="#proyecto" class="hover:text-gold-400 transition">Plan Integral de Seguridad (PISE)</a></li>
+                        <li><a href="#admision" class="hover:text-gold-400 transition">Cuenta Pública Anual</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto y Horarios (3 cols) -->
+                <div class="lg:col-span-3 space-y-3 text-sm">
+                    <h4 class="font-bold text-white uppercase text-xs tracking-wider mb-4 border-b border-slate-800 pb-2">Contacto Directo</h4>
+                    <p class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-location-dot text-gold-400 mt-1"></i>
+                        <span>Av. Concha y Toro 2450, Puente Alto, Santiago, Chile.</span>
+                    </p>
+                    <p class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-phone text-gold-400"></i>
+                        <span>+56 2 2850 4910 / +56 9 7412 8890</span>
+                    </p>
+                    <p class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-envelope text-gold-400"></i>
+                        <span>contacto@liceojaimeguzman.cl</span>
+                    </p>
+                    <div class="pt-2">
+                        <p class="text-xs font-bold text-gold-400 uppercase mb-1">Horario Secretaría y Atención:</p>
+                        <p class="text-xs text-slate-400">Lunes a Jueves: 08:00 a 17:30 hrs.</p>
+                        <p class="text-xs text-slate-400">Viernes: 08:00 a 14:30 hrs.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Barra Inferior Copyright -->
+            <div class="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>&copy; 2026 Liceo Jaime Guzmán García • Todos los derechos reservados.</p>
+                <p>Adscrito al Sistema de Admisión Escolar (SAE) • Ministerio de Educación de Chile</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 1: PORTAL APODERADOS / ESTUDIANTES (INTRANET SIMULADA)          -->
+    <!-- ===================================================================== -->
+    <div id="portal-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-200 animate-[fadeIn_0.2s_ease-out]">
+            
+            <!-- Cabecera Modal -->
+            <div class="bg-navy-900 p-6 text-white flex justify-between items-center border-b-2 border-gold-500">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-950 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg leading-tight">Intranet Escolar</h3>
+                        <p class="text-xs text-gold-300">Liceo Jaime Guzmán García</p>
+                    </div>
+                </div>
+                <button onclick="closePortalModal()" aria-label="Cerrar ventana" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Cuerpo del Modal -->
+            <div class="p-6 sm:p-8">
+                <!-- Selector de Perfil -->
+                <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl mb-6">
+                    <button type="button" id="role-btn-apoderado" onclick="setPortalRole('apoderado')" class="py-2 px-3 rounded-lg text-xs font-bold bg-navy-900 text-white shadow transition">
+                        <i class="fa-solid fa-user-tie mr-1"></i> Apoderado
+                    </button>
+                    <button type="button" id="role-btn-estudiante" onclick="setPortalRole('estudiante')" class="py-2 px-3 rounded-lg text-xs font-bold text-slate-600 hover:text-navy-900 transition">
+                        <i class="fa-solid fa-user-graduate mr-1"></i> Estudiante
+                    </button>
+                </div>
+
+                <!-- Vista Formulario Login -->
+                <form id="portal-login-form" class="space-y-4">
+                    <div>
+                        <label for="portal-rut" class="block text-xs font-bold text-navy-900 uppercase mb-1">RUT Usuario</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="fa-solid fa-id-card"></i>
+                            </span>
+                            <input type="text" id="portal-rut" required placeholder="12.345.678-9" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="portal-pass" class="block text-xs font-bold text-navy-900 uppercase mb-1">Contraseña</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input type="password" id="portal-pass" required placeholder="••••••••" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:border-navy-900 focus:ring-2 focus:ring-navy-900/20 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div id="portal-feedback" class="hidden p-3.5 rounded-xl text-xs font-medium"></div>
+
+                    <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold py-3.5 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <span id="portal-submit-label">Ingresar como Apoderado</span>
+                    </button>
+
+                    <div class="text-center pt-2">
+                        <p class="text-xs text-slate-500">
+                            ¿Problemas de acceso? Contacta a Soporte TI en <span class="font-semibold text-navy-900">soporte@liceojaimeguzman.cl</span>
+                        </p>
+                    </div>
+                </form>
+
+                <!-- Vista Simulada de Sesión Iniciada (Oculta hasta iniciar sesión) -->
+                <div id="portal-dashboard-preview" class="hidden space-y-4">
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                        <div>
+                            <p class="text-xs font-bold text-emerald-900">Sesión Iniciada Correctamente</p>
+                            <p id="portal-welcome-user" class="text-xs text-emerald-700">Bienvenido/a al Portal Institucional</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-center">
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <p class="text-xs text-slate-500">Promedio General</p>
+                            <p class="text-2xl font-extrabold text-navy-900 mt-1">6.4</p>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                            <p class="text-xs text-slate-500">Asistencia Anual</p>
+                            <p class="text-2xl font-extrabold text-emerald-600 mt-1">96%</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-navy-50 border border-navy-100 text-xs text-navy-900 space-y-1.5">
+                        <p class="font-bold"><i class="fa-solid fa-file-pdf text-rose-600 mr-1.5"></i> Certificados Disponibles:</p>
+                        <p class="text-slate-600">• Certificado de Alumno Regular 2026</p>
+                        <p class="text-slate-600">• Informe de Notas Parciales 2° Semestre</p>
+                    </div>
+
+                    <button type="button" onclick="logoutPortal()" class="w-full py-2.5 px-4 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-bold transition">
+                        Cerrar Sesión Simulada
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 2: DETALLE DE NOTICIAS                                          -->
+    <!-- ===================================================================== -->
+    <div id="news-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200">
+            <div class="p-6 sm:p-8">
+                <div class="flex justify-between items-start gap-4 mb-4">
+                    <span id="news-modal-tag" class="bg-navy-900 text-gold-400 text-xs font-bold px-3 py-1 rounded-full">Noticia</span>
+                    <button onclick="closeNewsModal()" aria-label="Cerrar noticia" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <p id="news-modal-date" class="text-xs text-slate-400 mb-2"></p>
+                <h3 id="news-modal-title" class="font-serif text-2xl font-bold text-navy-900 mb-4 leading-snug"></h3>
+                <p id="news-modal-body" class="text-sm text-slate-600 leading-relaxed mb-6"></p>
+                <button onclick="closeNewsModal()" class="w-full py-3 bg-navy-900 hover:bg-navy-800 text-white font-bold rounded-xl text-sm transition">
+                    Volver a Noticias
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT INTERACTIVO                                                -->
+    <!-- ===================================================================== -->
+    <script>
+        // 1. Menú Móvil Responsivo
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Pestañas Interactivas de Niveles Académicos
+        function switchAcademicTab(tabId) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.academic-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Restablecer estilos de todos los botones
+            document.querySelectorAll('.academic-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-navy-900', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('text-gold-400');
+                    icon.classList.add('text-navy-700');
+                }
+            });
+
+            // Mostrar pestaña seleccionada
+            const selectedContent = document.getElementById('tab-content-' + tabId);
+            const selectedBtn = document.getElementById('tab-btn-' + tabId);
+            
+            if (selectedContent) selectedContent.classList.remove('hidden');
+            if (selectedBtn) {
+                selectedBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                selectedBtn.classList.add('bg-navy-900', 'text-white', 'shadow-md');
+                const icon = selectedBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('text-navy-700');
+                    icon.classList.add('text-gold-400');
+                }
+            }
+        }
+
+        // 3. Modal Portal Apoderados / Estudiantes
+        const portalModal = document.getElementById('portal-modal');
+        let currentPortalRole = 'apoderado';
+
+        function openPortalModal() {
+            portalModal.classList.remove('hidden');
+            portalModal.classList.add('flex');
+            mobileMenu.classList.add('hidden');
+        }
+
+        function closePortalModal() {
+            portalModal.classList.add('hidden');
+            portalModal.classList.remove('flex');
+        }
+
+        function setPortalRole(role) {
+            currentPortalRole = role;
+            const btnApoderado = document.getElementById('role-btn-apoderado');
+            const btnEstudiante = document.getElementById('role-btn-estudiante');
+            const submitLabel = document.getElementById('portal-submit-label');
+
+            if (role === 'apoderado') {
+                btnApoderado.className = 'py-2 px-3 rounded-lg text-xs font-bold bg-navy-900 text-white shadow transition';
+                btnEstudiante.className = 'py-2 px-3 rounded-lg text-xs font-bold text-slate-600 hover:text-navy-900 transition';
+                submitLabel.textContent = 'Ingresar como Apoderado';
+            } else {
+                btnEstudiante.className = 'py-2 px-3 rounded-lg text-xs font-bold bg-navy-900 text-white shadow transition';
+                btnApoderado.className = 'py-2 px-3 rounded-lg text-xs font-bold text-slate-600 hover:text-navy-900 transition';
+                submitLabel.textContent = 'Ingresar como Estudiante';
+            }
+        }
+
+        document.getElementById('portal-login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const rutInput = document.getElementById('portal-rut').value.trim();
+            const passInput = document.getElementById('portal-pass').value.trim();
+            const feedback = document.getElementById('portal-feedback');
+
+            if (rutInput.length < 7 || passInput.length < 4) {
+                feedback.className = 'p-3.5 rounded-xl text-xs font-medium bg-rose-50 text-rose-700 border border-rose-200 block';
+                feedback.textContent = 'Por favor ingresa un RUT válido y una contraseña de al menos 4 caracteres.';
+                return;
+            }
+
+            // Simular ingreso exitoso
+            feedback.classList.add('hidden');
+            document.getElementById('portal-login-form').classList.add('hidden');
+            const dashboard = document.getElementById('portal-dashboard-preview');
+            const welcomeUser = document.getElementById('portal-welcome-user');
+            
+            const roleLabel = currentPortalRole === 'apoderado' ? 'Apoderado/a' : 'Estudiante';
+            welcomeUser.textContent = `Perfil: ${roleLabel} • RUT: ${rutInput}`;
+            dashboard.classList.remove('hidden');
+        });
+
+        function logoutPortal() {
+            document.getElementById('portal-dashboard-preview').classList.add('hidden');
+            document.getElementById('portal-login-form').classList.remove('hidden');
+            document.getElementById('portal-pass').value = '';
+        }
+
+        // Cerrar modales al hacer clic fuera del contenido
+        portalModal.addEventListener('click', (e) => {
+            if (e.target === portalModal) closePortalModal();
+        });
+
+        // 4. Modal de Detalle de Noticias
+        const newsModal = document.getElementById('news-modal');
+        const newsData = {
+            feria: {
+                tag: 'Ciencia y Tecnología',
+                date: '12 de Noviembre, 2026',
+                title: 'Exitosa VIII Feria Científica y de Innovación Sustentable',
+                body: 'Con una masiva asistencia de familias, docentes y representantes de universidades locales, nuestros estudiantes de 5° Básico a III° Medio expusieron más de 40 investigaciones aplicadas. Destacaron los prototipos de riego automatizado con energía solar, filtros biológicos de agua y programación en Arduino desarrollados en nuestros talleres ACLE.'
+            },
+            deporte: {
+                tag: 'Deportes y Vida Sana',
+                date: '04 de Noviembre, 2026',
+                title: 'Selección de Básquetbol obtiene 1° Lugar Regional',
+                body: 'En una emocionante final disputada en el Gimnasio Municipal, la selección sub-17 del Liceo Jaime Guzmán García superó por 68 a 61 a su rival, obteniendo el trofeo regional y clasificando al encuentro nacional escolar. Felicitamos al cuerpo técnico y a cada jugador por representar nuestros valores de esfuerzo y juego limpio.'
+            },
+            apoderados: {
+                tag: 'Comunidad y Familia',
+                date: '28 de Octubre, 2026',
+                title: 'Escuela para Padres: Acompañamiento socioemocional y preparación PAES',
+                body: 'La jornada abordó herramientas prácticas para apoyar el bienestar emocional de los adolescentes durante el cierre del año académico, además de entregar orientación detallada sobre postulación a beneficios estudiantiles (FUAS), gratuidad y becas del Ministerio de Educación.'
+            }
+        };
+
+        function openNewsModal(key) {
+            const item = newsData[key];
+            if (!item) return;
+            document.getElementById('news-modal-tag').textContent = item.tag;
+            document.getElementById('news-modal-date').textContent = item.date;
+            document.getElementById('news-modal-title').textContent = item.title;
+            document.getElementById('news-modal-body').textContent = item.body;
+            newsModal.classList.remove('hidden');
+            newsModal.classList.add('flex');
+        }
+
+        function closeNewsModal() {
+            newsModal.classList.add('hidden');
+            newsModal.classList.remove('flex');
+        }
+
+        newsModal.addEventListener('click', (e) => {
+            if (e.target === newsModal) closeNewsModal();
+        });
+
+        // 5. Validación del Formulario de Admisión y Visita Guiada
+        const admissionForm = document.getElementById('admission-form');
+        const admissionSuccessBox = document.getElementById('admission-success-box');
+
+        admissionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            const name = document.getElementById('parent-name');
+            const email = document.getElementById('parent-email');
+            const phone = document.getElementById('parent-phone');
+            const level = document.getElementById('student-level');
+            const reqType = document.getElementById('request-type').value;
+
+            // Validar Nombre
+            if (name.value.trim().length < 3) {
+                document.getElementById('err-parent-name').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('err-parent-name').classList.add('hidden');
+            }
+
+            // Validar Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                document.getElementById('err-parent-email').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('err-parent-email').classList.add('hidden');
+            }
+
+            // Validar Teléfono
+            if (phone.value.trim().length < 8) {
+                document.getElementById('err-parent-phone').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('err-parent-phone').classList.add('hidden');
+            }
+
+            // Validar Nivel
+            if (!level.value) {
+                document.getElementById('err-student-level').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('err-student-level').classList.add('hidden');
+            }
+
+            if (isValid) {
+                admissionForm.classList.add('hidden');
+                const successText = document.getElementById('admission-success-text');
+                successText.innerHTML = `Estimado/a <strong>${name.value.trim()}</strong>, hemos registrado tu solicitud de <strong>${reqType}</strong> para el nivel <strong>${level.value}</strong>. Te enviaremos un correo de confirmación a <strong>${email.value.trim()}</strong>.`;
+                admissionSuccessBox.classList.remove('hidden');
+            }
+        });
+
+        function resetAdmissionForm() {
+            admissionForm.reset();
+            admissionSuccessBox.classList.add('hidden');
+            admissionForm.classList.remove('hidden');
+        }
+
+        // 6. Animación suave al hacer scroll (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
